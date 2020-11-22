@@ -9,7 +9,7 @@
     "extensions.ignoreRecommendations": false,
     "files.exclude": {
       ".nuxt": true,
-      "dist": true,
+      // "dist": true,
       ".editorconfig": true,
     },
     "git.ignoreLimitWarning": true,
