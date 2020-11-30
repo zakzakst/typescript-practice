@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div></div>
-  <script src="scripts/index.ts" defer></script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>MVC練習 - じゃんけん</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="container">
+
+      <!-- 「相手 opponent」 -->
+      <div class="opponent__container has-background-light">
+        <div class="opponent">
+          <!-- <p class="is-size-4">ボタンを押してね</p> -->
+          <!-- <img class="opponent__img" src="/images/guu.png" alt=""> -->
+        </div>
+      </div>
+
+      <!-- 「自分 myself」 -->
+      <div class="myself">
+        <!-- <ul class="myself__btns columns has-text-centered">
+          <li class="column">
+            <p class="myself__btn is-selected">
+              <img class="myself__img" src="/images/guu.png" alt="">
+            </p>
+          </li>
+          <li class="column">
+            <p class="myself__btn">
+              <img class="myself__img" src="/images/choki.png" alt="">
+            </p>
+          </li>
+          <li class="column">
+            <p class="myself__btn">
+              <img class="myself__img" src="/images/paa.png" alt="">
+            </p>
+          </li>
+        </ul> -->
+      </div>
+
+      <!-- 「結果 result」 -->
+      <div class="result is-hidden">
+        <p class="result__text has-text-centered has-text-weight-bold is-size-3"></p>
+      </div>
+
+      <!-- 「リセット reset」 -->
+      <div class="reset is-hidden">
+        <p class="reset__btn button is-fullwidth">もう一回やる</p>
+      </div>
+
+    </div>
+    <!-- <script src="scripts/index.ts"></script> -->
+    <script src="scripts/index.js"></script>
+  </body>
+</html>
