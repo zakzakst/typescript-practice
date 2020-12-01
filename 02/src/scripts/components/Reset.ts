@@ -12,4 +12,7 @@ export class Reset {
   hide() {
     this.el.classList.add('is-hidden');
   }
+  getEl() {
+    return this.el;
+  }
 }

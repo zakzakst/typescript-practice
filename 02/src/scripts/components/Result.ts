@@ -33,4 +33,24 @@ export class Result {
     this.el.classList.add('is-hidden');
     this.textEl.textContent = '';
   }
+  /**
+   * チェック
+   * @param my 自分のじゃんけん選択番号
+   * @param op 相手のじゃんけん選択番号
+   * @return 勝敗の番号
+   */
+  checkResult(my: number, op: number): number {
+    if((my === 0 && op === 1) || (my === 1 && op === 2) || (my === 2 && op === 0)) {
+      // 勝ち
+      return 0;
+    } else if((my === 0 && op === 2) || (my === 1 && op === 0) || (my === 2 && op === 1)) {
+      // 負け
+      return 1;
+    } else if((my === 0 && op === 0) || (my === 1 && op === 1) || (my === 2 && op === 2)) {
+      // あいこ
+      return 2;
+    } else {
+      console.log('error');
+    }
+  }
 }

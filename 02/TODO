@@ -1,2 +1,4 @@
 参考:
   ☐ https://ics.media/entry/190325/
+  ☐ TypeScriptのタイプEventTargetにプロパティ'closest'が存在しません（https://qastack.jp/programming/44321326/property-value-does-not-exist-on-type-eventtarget-in-typescript）
+  ☐ classの型指定（https://qiita.com/uhyo/items/e2fdef2d3236b9bfe74a#クラスの型）

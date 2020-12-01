@@ -39,4 +39,7 @@ export class Myself {
     const btnArray = Array.from(btns);
     btnArray[index].classList.add('is-selected');
   }
+  getEl() {
+    return this.el;
+  }
 }
