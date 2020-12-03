@@ -10,4 +10,5 @@
 
 調べる:
   ☐ 共通関数から返ってくる値の型指定方法調べる（cookie）
-  ☐ Formの型の指定方法調べる（cookie）
+  ✔ Formの型の指定方法調べる（cookie）→document.フォーム名のようにしてフォームを参照するのは非推奨（https://teratail.com/questions/46729） @done(20-12-04 08:32)
+  ☐ 引数をもった関数の型調べる（googleSearch）

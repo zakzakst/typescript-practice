@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>MVC練習 - グーグル検索</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <form name="search" action="">
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <input name="searchInput" class="input" type="text" placeholder="キーワード">
+          </div>
+          <div class="control">
+            <input name="searchSubmit" type="submit" class="button is-primary" value="検索">
+          </div>
+        </div>
+      </form>
+
+      <!-- カードリスト -->
+      <div class="result columns">
+        <!-- <div class="column">
+          <a href="#" class="card">
+            <div class="card-content">
+              <p class="title is-4">John Smith</p>
+              <p class="subtitle is-6">@johnsmith</p>
+            </div>
+          </a>
+        </div>
+        <div class="column">
+          <a href="#" class="card">
+            <div class="card-content">
+              <p class="title is-4">John Smith</p>
+              <p class="subtitle is-6">@johnsmith</p>
+            </div>
+          </a>
+        </div> -->
+      </div>
+    </div>
+
+    <script src="script/index.ts"></script>
+    <!-- <script src="script/index.js"></script> -->
+  </body>
+</html>
