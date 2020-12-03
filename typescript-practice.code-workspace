@@ -17,7 +17,7 @@
       ".editorconfig": true,
       ".gitignore": true,
       "package-lock.json": true,
-      // "package.json": true,
+      "package.json": true,
     },
     "git.ignoreLimitWarning": true,
     "todohighlight.keywords": [
