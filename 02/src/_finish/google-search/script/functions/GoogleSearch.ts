@@ -1,7 +1,7 @@
 export class GoogleSearch {
   baseUrl: string;
   constructor(key: string, cx: string) {
-    this.baseUrl = `https://www.googleapis.com/customsearch/v1?key=${key}cx=${cx}&pws=0`;
+    this.baseUrl = `https://www.googleapis.com/customsearch/v1?key=${key}&cx=${cx}&pws=0`;
   }
   /**
    * 検索結果を取得
