@@ -1,0 +1,24 @@
+/* レイアウト */
+
+
+/* ★★★ */
+/* .is-dragover.file-label::after { */
+.is-dragover.file-cta::after {
+  content: 'ファイルをドロップ';
+  position: absolute;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, .5);
+  pointer-events: none;
+}
+.is-dragover.file-cta * {
+/* .is-dragover.file-label * { */
+  pointer-events: none;
+}
