@@ -18,5 +18,5 @@ import { Result } from './components/Result';
   );
   const result = new Result('.result');
 
-  searchForm.searchHandler(result.resultView);
+  searchForm.searchHandler(result.resultView.bind(result));
 })();

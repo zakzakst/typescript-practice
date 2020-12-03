@@ -9,7 +9,7 @@ export class Result {
    */
   resultView(data) {
     this.el.innerHTML = '';
-    data.forEach(item => {
+    data.items.forEach(item => {
       const markup = `
         <div class="column">
           <a href="${item.link}" class="card">
