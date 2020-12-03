@@ -1,0 +1,48 @@
+/* レイアウト */
+
+
+/* ★★★ */
+
+/* overlay */
+.my-overlay {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000000;
+  z-index: 10000;
+  transition: opacity 2s;
+}
+.my-overlay.my-is-hidden {
+  opacity: 0;
+}
+.my-overlay__loader {
+  font-size: 5vw;
+  color: #ffffff;
+  transition: transform 1s, opacity 1s;
+}
+.my-overlay__loader > span {
+  display: inline-block;
+  animation: overlayLoaderAnim 1s ease-out infinite alternate;
+}
+@keyframes overlayLoaderAnim {
+  0% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+.my-overlay__loader.my-is-hidden {
+  transform: translateY(20px);
+  opacity: 0;
+}
