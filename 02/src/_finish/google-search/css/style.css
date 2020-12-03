@@ -1,0 +1,14 @@
+/* レイアウト */
+.container {
+  max-width: 400px;
+  padding: 24px;
+}
+.columns {
+  display: block !important;
+  margin-top: 24px;
+}
+.card {
+  display: block;
+}
+
+/* ★★★ */
