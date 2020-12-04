@@ -1,0 +1,16 @@
+[
+  {"text": "明日", "hiragana": "あした", "icon": "fas fa-book"},
+  {"text": "朝ごはん", "hiragana": "あさごはん", "icon": "fas fa-align-left"},
+  {"text": "雨", "hiragana": "あめ", "icon": "fas fa-address-book"},
+  {"text": "アンチテーゼ", "hiragana": "あんちてーぜ", "icon": "fas fa-address-card"},
+  {"text": "秋", "hiragana": "あき", "icon": "fas fa-frown"},
+  {"text": "アルフォート", "hiragana": "あるふぉーと", "icon": "fas fa-head-side"},
+  {"text": "餡蜜", "hiragana": "あんみつ", "icon": "fas fa-bed"},
+  {"text": "空き缶", "hiragana": "あきかん", "icon": "fas fa-file-user"},
+
+  {"text": "今", "hiragana": "いま", "icon": "fas fa-power-off"},
+  {"text": "一生", "hiragana": "いっしょう", "icon": "fas fa-book"},
+  {"text": "一緒", "hiragana": "いっしょ", "icon": "fas fa-bed"},
+  {"text": "色々", "hiragana": "いろいろ", "icon": "fas fa-address-card"},
+  {"text": "色鉛筆", "hiragana": "いろえんぴつ", "icon": "fas fa-book"}
+]

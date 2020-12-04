@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>MVC練習 - 検索フォーム</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <form name="search" action="" autocomplete="off">
+        <div class="search__keyword-container field">
+          <label class="label">キーワード</label>
+          <div class="control">
+            <input name="keyword" class="search__keyword input" type="text" placeholder="遊び">
+          </div>
+          <div class="search__keyword-recommend panel is-hidden">
+            <!-- <a class="search__keyword-item panel-block">
+              <span class="panel-icon">
+                <i class="fas fa-book" aria-hidden="true"></i>
+              </span>
+              bulma
+            </a>
+            <a class="search__keyword-item panel-block">
+              <span class="panel-icon">
+                <i class="fas fa-book" aria-hidden="true"></i>
+              </span>
+              jgthms.github.io
+            </a> -->
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">場所</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select name="prefecture" class="search__place-prefecture">
+                <!-- <option>選択してください</option>
+                <option>東京都</option>
+                <option>埼玉県</option> -->
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select name="district" class="search__place-district" disabled>
+                <!-- <option>選択してください</option>
+                <option>練馬区</option>
+                <option>板橋区</option> -->
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select name="town" class="search__place-town" disabled>
+                <!-- <option>選択してください</option>
+                <option>氷川台</option>
+                <option>平和台</option> -->
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">目的</label>
+          <div class="control">
+            <input name="purpose" class="search__purpose input" type="text" placeholder="食べる ／ ランチ ／ ラーメン" readonly>
+          </div>
+        </div>
+        <!-- <div class="field">
+          <div class="control">
+            <input name="submit" type="submit" class="search__submit button is-primary" value="検索">
+          </div>
+        </div> -->
+      </form>
+    </div>
+    <div class="purpose-select modal">
+      <div class="purpose-select__close modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">目的を選択</p>
+          <!-- <button class="purpose-select__close delete" aria-label="close"></button> -->
+        </header>
+        <section class="modal-card-body">
+          <nav class="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
+            <ul class="purpose-select__breadcrumb">
+              <!-- <li class="purpose-select__breadcrumb--index"><a data-bc-type="index">目的</a></li>
+              <li class="purpose-select__breadcrumb--category is-hidden"></li>
+              <li class="purpose-select__breadcrumb--genre is-hidden"></li> -->
+            </ul>
+          </nav>
+          <ul class="purpose-select__list">
+            <!-- <li>
+              <a class="panel-block is-active">
+                <span class="panel-icon">
+                  <i class="fas fa-book" aria-hidden="true"></i>
+                </span>
+                bulma
+              </a>
+            </li>
+            <li>
+              <a class="panel-block is-active">
+                <span class="panel-icon">
+                  <i class="fas fa-book" aria-hidden="true"></i>
+                </span>
+                bulma
+              </a>
+            </li> -->
+          </ul>
+        </section>
+        <footer class="modal-card-foot">
+          <!-- <button class="button is-success">決定</button> -->
+          <button class="purpose-select__close button">キャンセル</button>
+        </footer>
+      </div>
+    </div>
+
+    <script src="scripts/index.ts"></script>
+    <!-- <script src="scripts/index.js"></script> -->
+  </body>
+</html>

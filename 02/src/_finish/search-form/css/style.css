@@ -1,0 +1,25 @@
+/* レイアウト */
+.container {
+  max-width: 400px;
+  padding: 24px;
+}
+
+/* キーワード */
+.search__keyword-container {
+  position: relative;
+}
+.search__keyword-reccomend {
+  position: absolute;
+  display: block;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  z-index: 10;
+}
+
+/* モーダル */
+.modal-card {
+  width: calc(100% - 48px);
+  max-width: 400px;
+}
