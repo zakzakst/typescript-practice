@@ -1,3 +1,9 @@
+作るもの:
+  ✔ calculator @done(20-12-04 15:59)
+  ☐ search_form
+  ☐ storage
+  ☐ bootstrap_lib
+
 参考:
   ☐ https://ics.media/entry/190325/
   ☐ TypeScriptのタイプEventTargetにプロパティ'closest'が存在しません（https://qastack.jp/programming/44321326/property-value-does-not-exist-on-type-eventtarget-in-typescript）
@@ -12,3 +18,4 @@
   ☐ 共通関数から返ってくる値の型指定方法調べる（cookie）
   ✔ Formの型の指定方法調べる（cookie）→document.フォーム名のようにしてフォームを参照するのは非推奨（https://teratail.com/questions/46729） @done(20-12-04 08:32)
   ☐ 引数をもった関数の型調べる（googleSearch）
+  ☐ 入る文字列が限定された型の指定方法調べる（calculator）
