@@ -1,0 +1,89 @@
+{
+  "categories": {
+    "study": {
+      "id": "study",
+      "text": "学ぶ",
+      "genres": [
+        "history",
+        "culture"
+      ]
+    },
+    "sports": {
+      "id": "sports",
+      "text": "スポーツ",
+      "genres": [
+        "running",
+        "cycling"
+      ]
+    },
+    "gourmet": {
+      "id": "gourmet",
+      "text": "食べる",
+      "genres": [
+        "lunch",
+        "dinner"
+      ]
+    }
+  },
+  "genres": {
+    "history": {
+      "id": "history",
+      "text": "歴史",
+      "purposes": [
+        "01",
+        "02",
+        "03"
+      ]
+    },
+    "culture": {
+      "id": "culture",
+      "text": "文化",
+      "purposes": [
+        "01",
+        "02",
+        "03"
+      ]
+    },
+    "running": {
+      "id": "running",
+      "text": "ランニング",
+      "purposes": [
+        "01",
+        "02",
+        "03"
+      ]
+    },
+    "cycling": {
+      "id": "cycling",
+      "text": "サイクリング",
+      "purposes": [
+        "01",
+        "02",
+        "03"
+      ]
+    },
+    "lunch": {
+      "id": "lunch",
+      "text": "ランチ",
+      "purposes": [
+        "01",
+        "02",
+        "03"
+      ]
+    },
+    "dinner": {
+      "id": "dinner",
+      "text": "ディナー",
+      "purposes": [
+        "01",
+        "02",
+        "03"
+      ]
+    }
+  },
+  "purposes": {
+    "01": {"id": "01", "text": "目的01"},
+    "02": {"id": "02", "text": "目的02"},
+    "03": {"id": "03", "text": "目的03"}
+  }
+}
