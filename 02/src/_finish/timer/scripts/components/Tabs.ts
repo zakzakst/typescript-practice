@@ -17,6 +17,7 @@ export class Tabs {
     this.tabEl = document.querySelector(selector.tab);
     this.contentEl = document.querySelector(selector.content);
     this.contentsList = contentsList;
+    this.currentContent = 0;
   }
   /**
    * 表示タブの変更
@@ -46,16 +47,15 @@ export class Tabs {
    * 表示タブの変更イベント
    * @return クリックされたタブの番号
    */
-  // TODO: ここ上手く処理できない（コンポーネント間の連携）
   changeHandler() {
     this.tabEl.addEventListener('click', e => {
+      const target = e.target as HTMLElement;
       // クリックされたタブのindexを取得
       const tabItems = this.tabEl.getElementsByTagName('li');
-      const itemIndex: number = Array.from(tabItems).indexOf(e.target.closest('li'));
+      const itemIndex: number = Array.from(tabItems).indexOf(target.closest('li'));
       // 取得したindexに応じた内容を表示
       this.tabChange(itemIndex);
-      // 取得したindexを返す
-      return itemIndex;
+      this.contentChange(itemIndex);
     });
   }
   initVew() {

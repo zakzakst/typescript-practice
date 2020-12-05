@@ -13,7 +13,6 @@
       ".vscode": true,
       // "dist": true,
       // "src/_finish": true,
-      "src/_hold": true,
       ".editorconfig": true,
       ".gitignore": true,
       "package-lock.json": true,

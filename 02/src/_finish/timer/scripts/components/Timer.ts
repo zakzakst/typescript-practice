@@ -1,6 +1,6 @@
 type selector = {
   text: string,
-  form: string,
+  form: HTMLFormElement,
   inputSet: string,
   input: string,
   start: string,
@@ -10,21 +10,20 @@ type selector = {
 
 export class Timer {
   textEl: HTMLElement;
-  formEl: HTMLElement;
+  formEl: HTMLFormElement;
   inputSetEl: HTMLElement;
   inputEl: HTMLElement;
   startEl: HTMLElement;
   stopEl: HTMLElement;
   resetEl: HTMLElement;
   isRunning: boolean;
-  startTime: Date;
-  remainTime: Date;
-  timer: number;
+  startTime: number;
+  remainTime: number;
+  timer;
   timerInterval: number;
   constructor(selector: selector, timerInterval: number) {
     this.textEl = document.querySelector(selector.text);
-    // TODO:フォーム要素の確認
-    this.formEl = document.querySelector(selector.form);
+    this.formEl = selector.form;
     this.inputSetEl = document.querySelector(selector.inputSet);
     this.inputEl = document.querySelector(selector.input);
     this.startEl = document.querySelector(selector.start);
@@ -51,10 +50,10 @@ export class Timer {
     }
     // 現在時刻を開始時間にセット
     const startTime = new Date();
-    this.startTime = startTime;
+    this.startTime = startTime.getTime();
     // タイマーを開始
+    // TODO: setIntervalの型の設定を調べる
     this.timer = setInterval(() => {
-      // TODO: 日付計算の型の設定を調べる
       if(this.getTime().remain > 0) {
         const text = this.getTime().remainText;
         this.textEl.innerHTML = text;
@@ -68,6 +67,8 @@ export class Timer {
         }, this.timerInterval);
       }
     }, this.timerInterval);
+    // 実行中表示
+    this.runningView();
   }
   /**
    * タイマーを停止
@@ -76,22 +77,23 @@ export class Timer {
     clearInterval(this.timer);
     this.remainTime = this.getTime().remain;
     this.isRunning = false;
+    // 停止中表示
     this.stopView();
   }
   /**
    * 残り時間を取得
    * @return 残り時間
    */
-  getTime(): {remain: Date, remainText: string} {
-    // TODO: 日付計算の型の設定を調べる
+  getTime(): {remain: number, remainText: string} {
     // 現在時間と開始時間の差分を計算
-    const diff = new Date() - state.timer.startTime;
+    const date = new Date();
+    const diff = date.getTime() - this.startTime;
     // 差分から残り時間を計算
-    const remain = state.timer.remainTime - diff;
+    const remain = this.remainTime - diff;
     // 残り時間を成形
-    let m = Math.floor(remain / 60000);
-    let s = Math.floor(remain % 60000 / 1000);
-    let ms = remain % 1000;
+    let m = Math.floor(remain / 60000).toString();
+    let s = Math.floor(remain % 60000 / 1000).toString();
+    let ms = (remain % 1000).toString();
     m = ('0' + m).slice(-2);
     s = ('0' + s).slice(-2);
     ms = ('0' + ms).slice(-3).slice(0, 2);
@@ -103,12 +105,11 @@ export class Timer {
    * 入力時間を取得
    * @return 入力時間
    */
-  getInput(): {text: string, time: Date} {
-    // TODO:フォーム要素の確認
+  getInput(): {text: string, time: number} {
     // 入力欄から値を取得
-    let m = this.form.min.value ? this.form.min.value : 0;
-    let s = this.form.sec.value ? this.form.sec.value : 0;
-    let ms = this.form.mSec.value ? this.form.mSec.value : 0;
+    let m = this.formEl.min.value ? this.formEl.min.value : 0;
+    let s = this.formEl.sec.value ? this.formEl.sec.value : 0;
+    let ms = this.formEl.mSec.value ? this.formEl.mSec.value : 0;
     // 文字列を作成
     m = ('0' + m).slice(-2);
     s = ('0' + s).slice(-2);
@@ -131,8 +132,9 @@ export class Timer {
     this.remainTime = null;
     this.timer = null;
     // 入力フォームの初期化
-    // TODO:フォーム要素の確認
     this.formEl.reset();
+    // 入力フォームを有効
+    this.inputSetEl.removeAttribute('disabled');
   }
   /**
    * 実行中表示
@@ -151,26 +153,24 @@ export class Timer {
     this.startEl.classList.remove('is-hidden');
     this.stopEl.classList.add('is-hidden');
     this.resetEl.classList.remove('is-hidden');
-    // 入力フォームを有効
-    this.inputSetEl.setAttribute('disabled', null);
   }
   /**
    * スタートイベント
    */
   startHandler() {
-    this.startEl.addEventListener('click', this.start);
+    this.startEl.addEventListener('click', this.start.bind(this));
   }
   /**
    * ストップイベント
    */
   stopHandler() {
-    this.stopEl.addEventListener('click', this.stop);
+    this.stopEl.addEventListener('click', this.stop.bind(this));
   }
   /**
    * リセットイベント
    */
   resetHandler() {
-    this.resetEl.addEventListener('click', this.initView);
+    this.resetEl.addEventListener('click', this.initView.bind(this));
   }
   /**
    * 初期化
