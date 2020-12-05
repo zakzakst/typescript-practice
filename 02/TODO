@@ -2,7 +2,7 @@
   ✔ calculator @done(20-12-04 15:59)
   ✔ search_form @done(20-12-05 08:00)
   ✔ storage @done(20-12-05 19:19)
-  ☐ bootstrap_lib
+  ✘ bootstrap_lib @cancelled(20-12-05 20:38)
 
 参考:
   ☐ https://ics.media/entry/190325/
@@ -23,3 +23,4 @@
   ☐ 配列の型指定方法調べる（searchForm）
   ☐ Promiseの型調べる（searchForm）
   ☐ querySelectorAllで取得する内容の型調べる（searchForm）
+  ☐ setIntervalの型の設定を調べる（timer）

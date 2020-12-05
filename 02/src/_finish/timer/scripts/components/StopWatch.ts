@@ -11,10 +11,11 @@ export class StopWatch {
   stopEl: HTMLElement;
   resetEl: HTMLElement;
   isRunning: boolean;
-  startTime: Date;
-  timeDiff: Date;
-  timer: number;
-  constructor(selector: selector) {
+  startTime: number;
+  timeDiff: number;
+  timer;
+  timerInterval: number;
+  constructor(selector: selector, timerInterval: number) {
     this.textEl = document.querySelector(selector.text);
     this.startEl = document.querySelector(selector.start);
     this.stopEl = document.querySelector(selector.stop);
@@ -23,6 +24,7 @@ export class StopWatch {
     this.startTime = null;
     this.timeDiff = null;
     this.timer = null;
+    this.timerInterval = timerInterval;
   }
   /**
    * タイマーをスタート
@@ -30,25 +32,23 @@ export class StopWatch {
   start() {
     // 開始時間を設定
     const startTime = new Date();
-    this.startTime = startTime;
+    this.startTime = startTime.getTime();
     // 実行状態を設定
     this.isRunning = true;
     // 実行中表示に変更
     this.runningView();
     // タイマーを開始
-    // TODO: intervalの時間を設定しなくて大丈夫か確認
     this.timer = setInterval(() => {
       const text = this.getTime().diffText;
       this.textEl.innerHTML = text;
-    });
+    }, this.timerInterval);
   }
   /**
    * タイマーをストップ
    */
   stop() {
     // タイマーを停止
-    // TODO: clearIntervalでないか確認
-    clearTimeout(this.timer);
+    clearInterval(this.timer);
     // 経過時間を設定
     this.timeDiff = this.getTime().diff;
     // 実行状態を設定
@@ -60,10 +60,10 @@ export class StopWatch {
    * 経過時間を取得
    * @return 経過時間の文字列
    */
-  getTime(): {diff: Date, diffText: string} {
-    // TODO: 日付計算の型の設定を調べる
+  getTime(): {diff: number, diffText: string} {
     const addTime = this.timeDiff ? this.timeDiff : 0;
-    const diff = new Date() - this.startTime + addTime;
+    const date = new Date();
+    const diff = date.getTime() - this.startTime + addTime;
 
     let m: string = Math.floor(diff / 60000).toString();
     let s: string = Math.floor(diff % 60000 / 1000).toString();

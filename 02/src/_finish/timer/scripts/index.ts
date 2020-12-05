@@ -1,16 +1,20 @@
 import { StopWatch } from './components/StopWatch';
 import { Timer } from './components/Timer';
+import { Tabs } from './components/Tabs';
 
 class App {
   stopWatch: StopWatch;
   timer: Timer;
-  constructor(stopWatchSelector, timerSelector, interval) {
-    this.stopWatch = new StopWatch(stopWatchSelector);
+  tabs: Tabs;
+  constructor(stopWatchSelector, timerSelector, interval, tabsConfig) {
+    this.stopWatch = new StopWatch(stopWatchSelector, interval);
     this.timer = new Timer(timerSelector, interval);
+    this.tabs = new Tabs(tabsConfig.selector, tabsConfig.contentList);
   }
   init() {
     this.stopWatch.init();
     this.timer.init();
+    this.tabs.init();
   }
 }
 
@@ -23,7 +27,7 @@ const settings = {
   },
   timer: {
     text: '.timer-text',
-    form: '',
+    form: document.timerForm,
     inputSet: '.timer-input__container',
     input: '.timer-input',
     start: '.timer-control__start',
@@ -31,8 +35,18 @@ const settings = {
     reset: '.timer-control__reset',
   },
   interval: 40,
+  tabsConfig: {
+    selector: {
+      tab: '.tabs__container',
+      content: '.contents',
+    },
+    contentList: [
+      {id: 'sw', text: 'ストップウォッチ'},
+      {id: 'timer', text: 'タイマー'},
+    ]
+  }
 };
 
-const app = new App(settings.stopWatch, settings.timer, settings.interval);
+const app = new App(settings.stopWatch, settings.timer, settings.interval, settings.tabsConfig);
 
 app.init();
