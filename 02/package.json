@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel src/index.html --open",
-    "build": "parcel build src/index.html"
+    "start": "parcel src/*.html --open",
+    "build": "parcel build src/*.html"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "parcel": "^1.12.4",
+    "pug": "^3.0.0",
+    "sass": "^1.29.0",
     "typescript": "^4.1.2"
   }
 }

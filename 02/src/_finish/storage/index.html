@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>MVC練習 - ストレージ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <!-- 入力フォーム -->
+      <form name="taskForm">
+        <div class="field">
+          <div class="control is-expanded">
+            <label class="label">業務タイトル</label>
+            <input name="taskTitle" class="input" type="text" placeholder="業務タイトル">
+            <p class="task-form__title-help help is-danger is-hidden"></p>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">業務詳細</label>
+          <div class="control">
+            <textarea name="taskDescription" class="textarea" placeholder="業務詳細"></textarea>
+            <p class="task-form__description-help help is-danger is-hidden"></p>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="task-form__add button is-primary">追加</button>
+          </div>
+          <div class="control">
+            <button class="task-form__reset button">リセット</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- カードリスト -->
+      <div class="task-list columns">
+        <!-- <div class="column">
+          <div class="card">
+            <div class="card-content">
+              <p class="title is-4">業務タイトル</p>
+              <p class="">業務の詳細が入ります。業務の詳細が入ります。業務の詳細が入ります。業務の詳細が入ります。</p>
+            </div>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">完了</a>
+              <a href="#" class="card-footer-item">編集</a>
+              <a href="#" class="card-footer-item">削除</a>
+            </footer>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <script src="scripts/index.ts"></script>
+    <!-- <script src="scripts/index.js"></script> -->
+  </body>
+</html>
