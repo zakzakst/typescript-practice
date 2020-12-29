@@ -3,9 +3,9 @@ export function sampleFunc() {
 }
 
 export class SampleClass {
-  text: String;
+  text: string;
 
-  constructor(text: String) {
+  constructor(text: string) {
     this.text = text;
   }
 
@@ -15,10 +15,10 @@ export class SampleClass {
 }
 
 type sampleObj = {
-  message: String
+  message: string
 }
 
-export const sampleObj = (text: String): sampleObj => {
+export const sampleObj = (text: string): sampleObj => {
   return {
     message: `this is ${text}`
   }
