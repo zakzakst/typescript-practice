@@ -3,7 +3,7 @@
 type chatConfig = {
   messagesElId: string,
   inputElId: string,
-  submitElId: string,
+  formElId: string,
   chatData,
   firstQuestionId: string,
 };
@@ -11,15 +11,17 @@ type chatConfig = {
 export class Chat {
   messagesEl: HTMLElement;
   // TODO: input要素の型指定が上手くできない
-  inputEl: HTMLElement;
-  submitEl: HTMLElement;
+  inputEl;
+  formEl;
+  // inputEl: HTMLElement;
+  // formEl: HTMLElement;
   chatData;
   messengers;
   currentQuestion: string;
   constructor(config: chatConfig) {
     this.messagesEl = document.getElementById(config.messagesElId);
     this.inputEl = document.getElementById(config.inputElId);
-    this.submitEl = document.getElementById(config.submitElId);
+    this.formEl = document.getElementById(config.formElId);
     this.currentQuestion = config.firstQuestionId;
     this.messengers = [
       'bot',
@@ -45,6 +47,10 @@ export class Chat {
 
       case 'input':
         this.showInput(question);
+        break;
+
+      case 'finish':
+        this.finish();
         break;
 
       default:
@@ -85,6 +91,7 @@ export class Chat {
    * @param question 質問データ
    */
   showInput(question) {
+    // TODO: 入力欄を有効にする
     console.log(question.id);
   }
 
@@ -93,20 +100,41 @@ export class Chat {
    * @param answer 返答
    */
   showAnswer(answer: string) {
-    console.log(answer);
+    this.showMessage(answer, this.messengers[1]);
   }
 
   /**
    * 次の質問に移動
    */
-  showNextQuestion() {}
+  showNextQuestion(id: string) {
+    this.currentQuestion = id;
+    this.showQuestion(id);
+  }
+
+  /**
+   * チャットを終了
+   */
+  finish() {
+    // TODO: チャット記録の実装
+    // チャット内容を記録
+    // 現在の質問を初期化
+    this.currentQuestion = null;
+    // 再質問開始ボタンを表示
+  }
 
   /**
    * 選択時の挙動
    */
   selectHandler() {
     this.messagesEl.addEventListener('click', e => {
-      console.log(e.target);
+      // TODO: イベントオブジェクトの型指定
+      const el = e.target;
+      // クリックした要素がボタン以外の場合、処理を止める
+      if (!el.classList.contains('button')) return;
+      // 返答を表示
+      this.showAnswer(el.textContent);
+      // 次の質問に移動
+      this.showNextQuestion(el.dataset.nextId);
     });
   }
 
@@ -114,10 +142,20 @@ export class Chat {
    * 入力欄決定時の挙動
    */
   submitHandler() {
-    this.submitEl.addEventListener('submit', e => {
+    this.formEl.addEventListener('submit', e => {
+      // 通常の処理を止める
+      e.stopPropagation();
       e.preventDefault();
-      // const input = this.inputEl.value;
-      // console.log(input);
+      // 入力内容を取得
+      const input = this.inputEl.value;
+      // 入力内容が空欄の場合、処理を止める
+      if (!input) return false;
+      // 入力欄をクリア
+      this.inputEl.value = '';
+      // 返答を表示
+      this.showAnswer(input);
+      // 次の質問に移動
+      this.showNextQuestion(this.chatData[this.currentQuestion].nextId);
     });
   }
 
@@ -126,5 +164,7 @@ export class Chat {
    */
   init() {
     this.showQuestion(this.currentQuestion);
+    this.selectHandler();
+    this.submitHandler();
   }
 }
