@@ -16,6 +16,7 @@ export class Chat {
   // inputEl: HTMLElement;
   // formEl: HTMLElement;
   chatData;
+  chatLog;
   messengers;
   currentQuestion: string;
   constructor(config: chatConfig) {
@@ -28,6 +29,7 @@ export class Chat {
       'person'
     ];
     this.chatData = config.chatData;
+    this.chatLog = [];
   }
 
   /**
@@ -112,12 +114,26 @@ export class Chat {
   }
 
   /**
+   * チャットの内容を記録
+   * @param id 質問ID
+   * @param answer 返答の内容
+   */
+  log(id, answer) {
+    this.chatLog.push({
+      id,
+      answer,
+    });
+  }
+
+  /**
    * チャットを終了
    */
   finish() {
     // TODO: チャット記録の実装
-    // チャット内容を記録
+    // チャット内容をデータベースに記録
+    console.log(this.chatLog);
     // 現在の質問を初期化
+    this.chatLog = [];
     this.currentQuestion = null;
     // 再質問開始ボタンを表示
   }
@@ -133,6 +149,8 @@ export class Chat {
       if (!el.classList.contains('button')) return;
       // 返答を表示
       this.showAnswer(el.textContent);
+      // 返答を記録
+      this.log(this.currentQuestion, el.textContent);
       // 次の質問に移動
       this.showNextQuestion(el.dataset.nextId);
     });
@@ -154,6 +172,8 @@ export class Chat {
       this.inputEl.value = '';
       // 返答を表示
       this.showAnswer(input);
+      // 返答を記録
+      this.log(this.currentQuestion, input);
       // 次の質問に移動
       this.showNextQuestion(this.chatData[this.currentQuestion].nextId);
     });
