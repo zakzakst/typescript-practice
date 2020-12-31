@@ -1,8 +1,10 @@
 js参考:
   ☐ 要素の挿入（https://qiita.com/butakoma/items/89fa687ab90ff28d57ef）
+  ☐ フォームの中身全てをdisableにする（https://teratail.com/questions/90432）
 
 typescript参考:
   ☐ submitのキャンセル（http://igrc.hatenablog.com/entry/2018/07/27/145655）
+  ☐ input要素、イベントオブジェクトの型指定（https://qastack.jp/programming/44321326/property-value-does-not-exist-on-type-eventtarget-in-typescript）
 
 Pug参考:
   ☐ include（https://qiita.com/kotazi_/items/f8f75fff356e0dbd3aa3、https://takblog.site/web/?p=708）

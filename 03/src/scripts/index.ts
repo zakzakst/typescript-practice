@@ -12,6 +12,7 @@ import chatData from './data/chat-data.json';
 const chat = new Chat({
   messagesElId: 'messages',
   inputElId: 'input',
+  submitElId: 'submit',
   formElId: 'form',
   chatData,
   firstQuestionId: 'q1',

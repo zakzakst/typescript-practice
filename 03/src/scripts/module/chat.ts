@@ -3,6 +3,7 @@
 type chatConfig = {
   messagesElId: string,
   inputElId: string,
+  submitElId: string,
   formElId: string,
   chatData,
   firstQuestionId: string,
@@ -10,19 +11,18 @@ type chatConfig = {
 
 export class Chat {
   messagesEl: HTMLElement;
-  // TODO: input要素の型指定が上手くできない
-  inputEl;
-  formEl;
-  // inputEl: HTMLElement;
-  // formEl: HTMLElement;
+  inputEl: HTMLInputElement;
+  submitEl: HTMLInputElement;
+  formEl: HTMLFormElement;
   chatData;
   chatLog;
   messengers;
   currentQuestion: string;
   constructor(config: chatConfig) {
     this.messagesEl = document.getElementById(config.messagesElId);
-    this.inputEl = document.getElementById(config.inputElId);
-    this.formEl = document.getElementById(config.formElId);
+    this.inputEl = <HTMLInputElement>document.getElementById(config.inputElId);
+    this.submitEl = <HTMLInputElement>document.getElementById(config.submitElId);
+    this.formEl = <HTMLFormElement>document.getElementById(config.formElId);
     this.currentQuestion = config.firstQuestionId;
     this.messengers = [
       'bot',
@@ -93,8 +93,17 @@ export class Chat {
    * @param question 質問データ
    */
   showInput(question) {
-    // TODO: 入力欄を有効にする
-    console.log(question.id);
+    // 入力欄を有効にする
+    this.setInputState(true);
+  }
+
+  /**
+   * 入力欄を有効／無効にする
+   * @param isActive true:有効 / false:無効
+   */
+  setInputState(isActive: boolean) {
+    this.inputEl.disabled = !isActive;
+    this.submitEl.disabled = !isActive;
   }
 
   /**
@@ -130,7 +139,7 @@ export class Chat {
    */
   finish() {
     // TODO: チャット記録の実装
-    // チャット内容をデータベースに記録
+    // 受け付けた内容を表示
     console.log(this.chatLog);
     // 現在の質問を初期化
     this.chatLog = [];
@@ -143,8 +152,7 @@ export class Chat {
    */
   selectHandler() {
     this.messagesEl.addEventListener('click', e => {
-      // TODO: イベントオブジェクトの型指定
-      const el = e.target;
+      const el = <HTMLInputElement>e.target;
       // クリックした要素がボタン以外の場合、処理を止める
       if (!el.classList.contains('button')) return;
       // 返答を表示
@@ -168,8 +176,9 @@ export class Chat {
       const input = this.inputEl.value;
       // 入力内容が空欄の場合、処理を止める
       if (!input) return false;
-      // 入力欄をクリア
+      // 入力欄をクリアして無効にする
       this.inputEl.value = '';
+      this.setInputState(false);
       // 返答を表示
       this.showAnswer(input);
       // 返答を記録
@@ -183,8 +192,9 @@ export class Chat {
    * 最初の質問を表示
    */
   init() {
-    this.showQuestion(this.currentQuestion);
     this.selectHandler();
     this.submitHandler();
+    this.setInputState(false);
+    this.showQuestion(this.currentQuestion);
   }
 }
