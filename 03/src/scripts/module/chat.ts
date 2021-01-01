@@ -67,7 +67,7 @@ export class Chat {
    */
   showMessage(message: string, messenger: string): void {
     const markup = `
-      <p class="message--${messenger}">${message}</p>
+      <div class="message--${messenger}">${message}</div>
     `;
     this.messagesEl.insertAdjacentHTML('beforeend', markup);
   }
@@ -138,13 +138,27 @@ export class Chat {
    * チャットを終了
    */
   finish() {
-    // TODO: チャット記録の実装
     // 受け付けた内容を表示
-    console.log(this.chatLog);
+    let logList = '';
+    this.chatLog.forEach(log => {
+      logList += `
+        <li>
+          <h2>${this.chatData[log.id].message}</h2>
+          <p>${log.answer}</p>
+        </li>
+      `;
+    });
+    const log = `
+      <p>以下の内容で質問を受け付けました</p>
+      <ul>
+        ${logList}
+      </ul>
+    `;
+    this.showMessage(log, this.messengers[0]);
     // 現在の質問を初期化
     this.chatLog = [];
     this.currentQuestion = null;
-    // 再質問開始ボタンを表示
+    // TODO: 再質問開始ボタンを表示
   }
 
   /**
