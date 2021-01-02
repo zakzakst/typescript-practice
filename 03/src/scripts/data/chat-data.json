@@ -24,6 +24,27 @@
     "type": "input",
     "nextId": "q5"
   },
+  "q3": {
+    "id": "q3",
+    "message": "どの部分の操作について質問したいですか",
+    "type": "select",
+    "selectItems": [
+      {
+        "nextId": "q5",
+        "label": "入力フォーム"
+      },
+      {
+        "nextId": "q5",
+        "label": "メニューボタン"
+      }
+    ]
+  },
+  "q4": {
+    "id": "q4",
+    "message": "質問したい内容を入力してください",
+    "type": "input",
+    "nextId": "q5"
+  },
   "q5": {
     "id": "q5",
     "message": "ご対応ありがとうございました",

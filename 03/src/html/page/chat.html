@@ -1,8 +1,22 @@
-<div id="messages" class="messages">
-  <!-- <p>何について質問ですか？</p>
-  <p>焼きそば</p> -->
+<div class="chat__container">
+  <div class="chat">
+    <div id="messages" class="messages"></div>
+    <div class="form__container">
+      <form id="form" class="form">
+        <div class="field has-addons">
+          <p class="control is-expanded">
+            <input id="input" class="input" type="text">
+          </p>
+          <p class="control">
+            <input id="submit" class="button is-primary" type="submit" value="送信">
+          </p>
+        </div>
+      </form>
+    </div>
+    <button id="reset" class="reset" title="最初からやり直す">
+      <span class="icon has-text-white">
+        <i class="fas fa-reply"></i>
+      </span>
+    </button>
+  </div>
 </div>
-<form id="form">
-  <input id="input" type="text">
-  <input id="submit" type="submit" value="送信">
-</form>
