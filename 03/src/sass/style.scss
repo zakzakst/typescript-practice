@@ -1,1 +1,88 @@
 // @import 'module/sample';
+@import 'base/variables';
+
+.chat__container {
+  max-width: $width_chat;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 16px 0;
+}
+.chat {
+  position: relative;
+  height: 100%;
+  padding: 24px 24px 72px;
+  background: $color_base;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+$massages-bar-space: 8px;
+.messages {
+  max-height: 100%;
+  margin-right: -$massages-bar-space;
+  padding-right: $massages-bar-space;
+  overflow: auto;
+}
+.message__container {
+  margin-top: 16px;
+  overflow: hidden;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+.message {
+  position: relative;
+  padding: 8px;
+  background: $color_message_base;
+  border-radius: 8px;
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 8px;
+    border: 8px solid transparent;
+  }
+}
+.message--bot {
+  margin-left: 8px;
+  margin-right: 32px;
+  &::before {
+    left: -16px;
+    border-right-color: $color_message_base;
+  }
+}
+.message--person {
+  margin-left: 32px;
+  margin-right: 8px;
+  &::before {
+    right: -16px;
+    border-left-color: $color_message_base;
+  }
+}
+
+.form__container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8px;
+  background: $color_form_base;
+}
+
+.reset {
+  position: absolute;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  top: 8px;
+  right: 8px;
+  justify-content: center;
+  align-items: center;
+  background: $color_reset;
+  border: none;
+  border-radius: 50%;
+  z-index: $z_reset;
+  &:focus {
+    outline: none;
+  }
+}

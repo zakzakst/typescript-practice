@@ -14,6 +14,7 @@ const chat = new Chat({
   inputElId: 'input',
   submitElId: 'submit',
   formElId: 'form',
+  resetElId: 'reset',
   chatData,
   firstQuestionId: 'q1',
 });

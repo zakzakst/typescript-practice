@@ -5,6 +5,7 @@ type chatConfig = {
   inputElId: string,
   submitElId: string,
   formElId: string,
+  resetElId: string,
   chatData,
   firstQuestionId: string,
 };
@@ -14,15 +15,19 @@ export class Chat {
   inputEl: HTMLInputElement;
   submitEl: HTMLInputElement;
   formEl: HTMLFormElement;
+  resetEl: HTMLElement;
   chatData;
   chatLog;
   messengers;
+  firstQuestion: string;
   currentQuestion: string;
   constructor(config: chatConfig) {
     this.messagesEl = document.getElementById(config.messagesElId);
     this.inputEl = <HTMLInputElement>document.getElementById(config.inputElId);
     this.submitEl = <HTMLInputElement>document.getElementById(config.submitElId);
     this.formEl = <HTMLFormElement>document.getElementById(config.formElId);
+    this.resetEl = document.getElementById(config.resetElId);
+    this.firstQuestion = config.firstQuestionId;
     this.currentQuestion = config.firstQuestionId;
     this.messengers = [
       'bot',
@@ -67,9 +72,12 @@ export class Chat {
    */
   showMessage(message: string, messenger: string): void {
     const markup = `
-      <div class="message--${messenger}">${message}</div>
+      <div class="message__container">
+        <div class="message message--${messenger}">${message}</div>
+      </div>
     `;
     this.messagesEl.insertAdjacentHTML('beforeend', markup);
+    // TODO: 追加後にメッセージを一番下にスクロール
   }
 
   /**
@@ -77,7 +85,7 @@ export class Chat {
    * @param question 質問データ
    */
   showSelect(question) {
-    let buttonMarkupArr = question.selectItems.map(item => {
+    const buttonMarkupArr = question.selectItems.map(item => {
       return `<button class="button" data-next-id="${item.nextId}">${item.label}</button>`;
     });
     let markup = `
@@ -85,7 +93,8 @@ export class Chat {
         ${buttonMarkupArr.join('')}
       </div>
     `;
-    this.messagesEl.insertAdjacentHTML('beforeend', markup);
+    // this.messagesEl.insertAdjacentHTML('beforeend', markup);
+    this.showMessage(markup, this.messengers[1]);
   }
 
   /**
@@ -139,26 +148,25 @@ export class Chat {
    */
   finish() {
     // 受け付けた内容を表示
-    let logList = '';
-    this.chatLog.forEach(log => {
-      logList += `
+    const logMarkupArr = this.chatLog.map(log => {
+      return `
         <li>
           <h2>${this.chatData[log.id].message}</h2>
           <p>${log.answer}</p>
         </li>
       `;
     });
-    const log = `
+    const markup = `
       <p>以下の内容で質問を受け付けました</p>
       <ul>
-        ${logList}
+        ${logMarkupArr.join('')}
       </ul>
     `;
-    this.showMessage(log, this.messengers[0]);
+    this.showMessage(markup, this.messengers[0]);
+    // NOTE: データベースへの記録が必要な場合はここに処理を記載
     // 現在の質問を初期化
     this.chatLog = [];
     this.currentQuestion = null;
-    // TODO: 再質問開始ボタンを表示
   }
 
   /**
@@ -203,11 +211,29 @@ export class Chat {
   }
 
   /**
+   * 最初からやり直すボタンクリック時の挙動
+   */
+  resetHandler() {
+    this.resetEl.addEventListener('click', () => {
+      this.showMessage('最初からやり直す', this.messengers[1]);
+      // 入力欄をクリア
+      this.formEl.reset();
+      this.setInputState(false);
+      // 現在の質問を初期化
+      this.chatLog = [];
+      this.currentQuestion = this.firstQuestion;
+      // 最初の質問を表示
+      this.showQuestion(this.firstQuestion);
+    });
+  }
+
+  /**
    * 最初の質問を表示
    */
   init() {
     this.selectHandler();
     this.submitHandler();
+    this.resetHandler();
     this.setInputState(false);
     this.showQuestion(this.currentQuestion);
   }
