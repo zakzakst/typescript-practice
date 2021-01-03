@@ -1,6 +1,7 @@
 js参考:
   ☐ 要素の挿入（https://qiita.com/butakoma/items/89fa687ab90ff28d57ef）
   ☐ フォームの中身全てをdisableにする（https://teratail.com/questions/90432）
+  ☐ 「overflow:hidden」のスクロール位置調整（https://techacademy.jp/magazine/32976、https://www.yoheim.net/blog.php?q=20120420）
 
 typescript参考:
   ☐ submitのキャンセル（http://igrc.hatenablog.com/entry/2018/07/27/145655）
