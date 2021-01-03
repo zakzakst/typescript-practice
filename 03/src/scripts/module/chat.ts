@@ -77,7 +77,8 @@ export class Chat {
       </div>
     `;
     this.messagesEl.insertAdjacentHTML('beforeend', markup);
-    // TODO: 追加後にメッセージを一番下にスクロール
+    // 追加後にメッセージを一番下にスクロール
+    this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
   }
 
   /**
@@ -85,16 +86,22 @@ export class Chat {
    * @param question 質問データ
    */
   showSelect(question) {
-    const buttonMarkupArr = question.selectItems.map(item => {
-      return `<button class="button" data-next-id="${item.nextId}">${item.label}</button>`;
+    const listMarkupArr = question.selectItems.map(item => {
+      return `
+        <li>
+          <a class="select-item" data-next-id="${item.nextId}" href="#">${item.label}</a>
+        </li>
+      `;
     });
     let markup = `
-      <div>
-        ${buttonMarkupArr.join('')}
+      <div class="content">
+        <p>以下から選択してください</p>
+        <ul>
+        ${ listMarkupArr.join('') }
+        </ul>
       </div>
     `;
-    // this.messagesEl.insertAdjacentHTML('beforeend', markup);
-    this.showMessage(markup, this.messengers[1]);
+    this.showMessage(markup, this.messengers[0]);
   }
 
   /**
@@ -150,15 +157,15 @@ export class Chat {
     // 受け付けた内容を表示
     const logMarkupArr = this.chatLog.map(log => {
       return `
-        <li>
-          <h2>${this.chatData[log.id].message}</h2>
-          <p>${log.answer}</p>
+        <li class="message-log__item">
+          <p class="message-log__question">【${this.chatData[log.id].message}】</p>
+          <p class="message-log__answer">${log.answer}</p>
         </li>
       `;
     });
     const markup = `
       <p>以下の内容で質問を受け付けました</p>
-      <ul>
+      <ul class="message-log">
         ${logMarkupArr.join('')}
       </ul>
     `;
@@ -174,9 +181,10 @@ export class Chat {
    */
   selectHandler() {
     this.messagesEl.addEventListener('click', e => {
+      e.preventDefault();
       const el = <HTMLInputElement>e.target;
       // クリックした要素がボタン以外の場合、処理を止める
-      if (!el.classList.contains('button')) return;
+      if (!el.classList.contains('select-item')) return;
       // 返答を表示
       this.showAnswer(el.textContent);
       // 返答を記録

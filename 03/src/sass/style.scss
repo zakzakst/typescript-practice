@@ -22,6 +22,17 @@ $massages-bar-space: 8px;
   margin-right: -$massages-bar-space;
   padding-right: $massages-bar-space;
   overflow: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #039;
+    border-radius: 4px;
+  }
 }
 .message__container {
   margin-top: 16px;
@@ -58,6 +69,23 @@ $massages-bar-space: 8px;
     right: -16px;
     border-left-color: $color_message_base;
   }
+}
+.message-log {
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background: $color_message_log_base;
+  font-size: .85rem;
+}
+.message-log__item {
+  padding: 8px 0;
+  border-top: 1px dotted #666;
+  &:first-child {
+    border: none;
+  }
+}
+.message-log__answer {
+  font-weight: bold;
 }
 
 .form__container {
