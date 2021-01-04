@@ -1,0 +1,23 @@
+//- 変数の設定
+- var TITLE = 'タイトルが入ります'
+- var DESCRIPTION = 'ページ概要が入ります'
+
+//- HTML
+doctype html
+html(lang="ja")
+  head
+    include html/module/head.pug
+    link(rel='stylesheet', href='sass/style.scss')
+
+  body
+    //- ヘッダー参考
+    include html/module/header.pug
+
+    div.container
+      include html/page/sample.html
+
+    //- フッター参考
+    include html/module/footer.pug
+
+    //- スクリプト読込
+    script(src='scripts/index.ts')

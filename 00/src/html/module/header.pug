@@ -1,0 +1,6 @@
+include ../common/var.pug
+
+header
+  nav: ul
+    each item in headerNavItems
+      li: a(href=item.link) #{ item.label }
