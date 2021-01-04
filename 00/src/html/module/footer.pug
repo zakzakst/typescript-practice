@@ -1,0 +1,8 @@
+include ../common/var.pug
+
+footer
+  each item in footerItems
+    p #{ item.category }
+    ul
+      each link in item.links
+        li: a(href=link.link) #{ link.label }
