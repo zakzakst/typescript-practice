@@ -1,0 +1,6 @@
+.page {
+  display: none;
+  &.is-active {
+    display: block;
+  }
+}
