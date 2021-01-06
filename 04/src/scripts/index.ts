@@ -11,6 +11,7 @@ const startConfig = {
   pagesClass: 'page',
   gamePageId: 'js-page-game',
   startBtnsClass: 'js-start-btn',
+  bgmSrc: '/audio/bgm.mp3',
 }
 const start = new Start(startConfig);
 start.init();

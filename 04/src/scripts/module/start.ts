@@ -1,19 +1,24 @@
 'use strict';
 
+import { Sound } from './sound';
+
 type startConfig = {
   pagesClass: string,
   gamePageId: string,
   startBtnsClass: string,
+  bgmSrc: string,
 }
 
 export class Start {
   pagesEl;
   gamePageEl: HTMLElement;
   startBtnsEl;
+  bgm: Sound;
   constructor(config: startConfig) {
     this.pagesEl = document.querySelectorAll(`.${config.pagesClass}`);
     this.gamePageEl = document.getElementById(config.gamePageId);
     this.startBtnsEl = document.querySelectorAll(`.${config.startBtnsClass}`);
+    this.bgm = new Sound(config.bgmSrc, true);
   }
 
   /**
@@ -21,6 +26,7 @@ export class Start {
    */
   startBgm(): void {
     console.log('BGMを開始');
+    this.bgm.play();
   }
 
   /**
@@ -56,6 +62,7 @@ export class Start {
    */
   init(): void {
     console.log('スタート画面初期化');
+    this.bgm.init();
     this.startHandler();
   }
 }
