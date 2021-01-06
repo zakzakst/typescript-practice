@@ -1,6 +1,6 @@
 //- 変数の設定
-- var TITLE = 'タイトルが入ります'
-- var DESCRIPTION = 'ページ概要が入ります'
+- var TITLE = 'ゲーム'
+- var DESCRIPTION = 'ゲームの作成'
 
 //- HTML
 doctype html
@@ -11,13 +11,19 @@ html(lang="ja")
 
   body
     //- ヘッダー参考
-    include html/module/header.pug
+    //- include html/module/header.pug
 
     div.container
-      include html/page/sample.html
+      //- include html/page/sample.html
+      //- スタート画面
+      div#js-page-start.page.is-active
+        include html/page/start.html
+      //- ゲーム画面
+      div#js-page-game.page
+        include html/page/game.html
 
     //- フッター参考
-    include html/module/footer.pug
+    //- include html/module/footer.pug
 
     //- スクリプト読込
     script(src='scripts/index.ts')
